@@ -18,7 +18,7 @@ export function registerAssetCommands(program: Command): void {
           limit: opts.limit,
         };
         if (opts.assetIds) params.asset_ids = opts.assetIds;
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}/assets`, params });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}/assets`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -39,12 +39,12 @@ export function registerAssetCommands(program: Command): void {
     });
 
   program
-    .command("pixel <pixel-id>")
+    .command("pixel <business-id> <pixel-id>")
     .description("Get a specific pixel")
-    .action(async (pixelId: string) => {
+    .action(async (businessId: string, pixelId: string) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
-        const data = await callApi({ creds, path: `pixels/${pixelId}` });
+        const data = await callApi({ creds, path: `businesses/${businessId}/pixels/${pixelId}` });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);

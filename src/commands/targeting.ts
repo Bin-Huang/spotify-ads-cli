@@ -11,13 +11,8 @@ export function registerTargetingCommands(program: Command): void {
     .action(async (opts) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
-        const params: Record<string, string> = {};
-        // Pass targeting as query params
-        const targeting = JSON.parse(opts.targeting);
-        for (const [k, v] of Object.entries(targeting)) {
-          params[k] = typeof v === "string" ? v : JSON.stringify(v);
-        }
-        const data = await callApi({ creds, path: "targeting/estimateAudience", params });
+        const body = JSON.parse(opts.targeting);
+        const data = await callApi({ creds, path: "estimates/audience", method: "POST", body });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -31,12 +26,8 @@ export function registerTargetingCommands(program: Command): void {
     .action(async (opts) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
-        const params: Record<string, string> = {};
-        const targeting = JSON.parse(opts.targeting);
-        for (const [k, v] of Object.entries(targeting)) {
-          params[k] = typeof v === "string" ? v : JSON.stringify(v);
-        }
-        const data = await callApi({ creds, path: "targeting/estimateBid", params });
+        const body = JSON.parse(opts.targeting);
+        const data = await callApi({ creds, path: "estimates/bid", method: "POST", body });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -52,8 +43,8 @@ export function registerTargetingCommands(program: Command): void {
       try {
         const creds = loadCredentials(program.opts().credentials);
         const params: Record<string, string> = { limit: opts.limit };
-        if (opts.query) params.query = opts.query;
-        const data = await callApi({ creds, path: "targeting/geoTargets", params });
+        if (opts.query) params.q = opts.query;
+        const data = await callApi({ creds, path: "targets/geos", params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -69,8 +60,8 @@ export function registerTargetingCommands(program: Command): void {
       try {
         const creds = loadCredentials(program.opts().credentials);
         const params: Record<string, string> = { limit: opts.limit };
-        if (opts.query) params.query = opts.query;
-        const data = await callApi({ creds, path: "targeting/interestTargets", params });
+        if (opts.query) params.q = opts.query;
+        const data = await callApi({ creds, path: "targets/interests", params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -89,7 +80,7 @@ export function registerTargetingCommands(program: Command): void {
           offset: opts.offset,
           limit: opts.limit,
         };
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}/audiences`, params });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}/audiences`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);

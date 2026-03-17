@@ -42,7 +42,7 @@ export function registerAccountCommands(program: Command): void {
           offset: opts.offset,
           limit: opts.limit,
         };
-        const data = await callApi({ creds, path: `businesses/${businessId}/adAccounts`, params });
+        const data = await callApi({ creds, path: `businesses/${businessId}/ad_accounts`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -55,7 +55,7 @@ export function registerAccountCommands(program: Command): void {
     .action(async (adAccountId: string) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}` });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}` });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);

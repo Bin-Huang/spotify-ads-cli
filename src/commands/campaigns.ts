@@ -18,7 +18,7 @@ export function registerCampaignCommands(program: Command): void {
           limit: opts.limit,
         };
         if (opts.status) params.statuses = opts.status;
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}/campaigns`, params });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}/campaigns`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -52,7 +52,7 @@ export function registerCampaignCommands(program: Command): void {
           limit: opts.limit,
         };
         if (opts.status) params.statuses = opts.status;
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}/adSets`, params });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}/ad_sets`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -65,7 +65,7 @@ export function registerCampaignCommands(program: Command): void {
     .action(async (adsetId: string) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
-        const data = await callApi({ creds, path: `adSets/${adsetId}` });
+        const data = await callApi({ creds, path: `ad_sets/${adsetId}` });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
@@ -86,7 +86,7 @@ export function registerCampaignCommands(program: Command): void {
           limit: opts.limit,
         };
         if (opts.status) params.statuses = opts.status;
-        const data = await callApi({ creds, path: `adAccounts/${adAccountId}/ads`, params });
+        const data = await callApi({ creds, path: `ad_accounts/${adAccountId}/ads`, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);
