@@ -27,7 +27,7 @@ export function registerAssetCommands(program: Command): void {
 
   program
     .command("pixels <business-id>")
-    .description("List Meta Pixels for a business")
+    .description("List Spotify Pixels for a business")
     .action(async (businessId: string) => {
       try {
         const creds = loadCredentials(program.opts().credentials);

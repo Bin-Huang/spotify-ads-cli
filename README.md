@@ -174,13 +174,14 @@ Get aggregate performance report.
 
 ```bash
 spotify-ads-cli aggregate-report acc_abc123 --start 2026-01-01 --end 2026-01-31
-spotify-ads-cli aggregate-report acc_abc123 --start 2026-01-01 --end 2026-01-31 --group-by CAMPAIGN,DAY
+spotify-ads-cli aggregate-report acc_abc123 --start 2026-01-01 --end 2026-01-31 --entity-type CAMPAIGN --granularity DAY
 ```
 
 Options:
 - `--start <date>` -- start date (YYYY-MM-DD) **required**
 - `--end <date>` -- end date (YYYY-MM-DD) **required**
-- `--group-by <fields>` -- group by (comma-separated): CAMPAIGN, AD_SET, AD, DAY, WEEK, MONTH
+- `--entity-type <type>` -- entity type: CAMPAIGN, AD_SET, AD
+- `--granularity <granularity>` -- time granularity: DAY, WEEK, MONTH
 - `--campaign-ids <ids>` -- filter by campaign IDs (comma-separated)
 - `--adset-ids <ids>` -- filter by ad set IDs (comma-separated)
 - `--continuation-token <token>` -- pagination token from previous response
@@ -190,13 +191,14 @@ Options:
 Get insight report (audience demographics, platform, etc.).
 
 ```bash
-spotify-ads-cli insight-report acc_abc123 --start 2026-01-01 --end 2026-01-31 --group-by AGE,GENDER
+spotify-ads-cli insight-report acc_abc123 --start 2026-01-01 --end 2026-01-31 --insight-dimension AGE
 ```
 
 Options:
 - `--start <date>` -- start date (YYYY-MM-DD) **required**
 - `--end <date>` -- end date (YYYY-MM-DD) **required**
-- `--group-by <fields>` -- group by: AGE, GENDER, PLATFORM, GENRE, etc.
+- `--entity-type <type>` -- entity type: CAMPAIGN, AD_SET, AD
+- `--insight-dimension <dimension>` -- insight dimension: AGE, GENDER, PLATFORM, GENRE, etc.
 - `--campaign-ids <ids>` -- filter by campaign IDs (comma-separated)
 - `--continuation-token <token>` -- pagination token
 
@@ -211,14 +213,15 @@ spotify-ads-cli csv-report acc_abc123 --start 2026-01-01 --end 2026-01-31
 Options:
 - `--start <date>` -- start date (YYYY-MM-DD) **required**
 - `--end <date>` -- end date (YYYY-MM-DD) **required**
-- `--group-by <fields>` -- group by (comma-separated)
+- `--entity-type <type>` -- entity type: CAMPAIGN, AD_SET, AD
+- `--granularity <granularity>` -- time granularity: DAY, WEEK, MONTH
 
 ### csv-report-status
 
 Get CSV report generation status.
 
 ```bash
-spotify-ads-cli csv-report-status rpt_abc123
+spotify-ads-cli csv-report-status acc_abc123 rpt_abc123
 ```
 
 ### estimate-audience
@@ -315,7 +318,7 @@ spotify-ads-cli pixels biz_abc123
 Get a specific pixel.
 
 ```bash
-spotify-ads-cli pixel pix_abc123
+spotify-ads-cli pixel biz_abc123 pix_abc123
 ```
 
 ### datasets
