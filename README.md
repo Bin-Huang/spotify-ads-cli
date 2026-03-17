@@ -1,6 +1,8 @@
 # spotify-ads-cli
 
-Spotify Ads CLI for AI agents. Read-only access to Spotify Ads API for managing audio ad campaigns, reporting, and audience targeting.
+Spotify Ads CLI for AI agents (and humans). Pull aggregate and demographic insight reports, estimate audience and bid ranges, manage audio creatives, track measurement pixels, and more.
+
+**Works with:** OpenClaw, Claude Code, Cursor, Codex, and any agent that can run shell commands.
 
 ## Installation
 
@@ -8,12 +10,27 @@ Spotify Ads CLI for AI agents. Read-only access to Spotify Ads API for managing 
 npm install -g spotify-ads-cli
 ```
 
+Or run directly with npx:
+
+```bash
+npx spotify-ads-cli --help
+```
+
 ## How it works
 
-- All output is JSON to stdout (machine-readable)
-- Errors go to stderr as `{"error": "..."}`
-- Exit code 0 = success, non-zero = failure
-- Uses Spotify Ads API v3
+Built on the official [Spotify Ads API](https://developer.spotify.com/documentation/ads-api) (v3). Authenticates via OAuth2 access token from a Spotify Developer App with Ads API access.
+
+Core endpoints covered:
+
+- **Businesses & Ad Accounts** -- list and inspect businesses and ad accounts
+- **Campaigns** -- list and get campaigns with status filtering
+- **Ad Sets** -- list and get ad sets (targeting, budget, schedule)
+- **Ads** -- list and get individual ads (creatives)
+- **Reporting** -- aggregate reports, insight reports (demographics, platform, genre), and async CSV reports
+- **Targeting** -- audience size estimation, bid estimation, geo targets, and interest targets
+- **Audiences** -- custom and lookalike audiences
+- **Assets** -- audio, image, and other creative assets
+- **Measurement** -- pixels, datasets, and dataset diagnostics
 
 ## Setup
 
