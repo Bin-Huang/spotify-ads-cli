@@ -10,11 +10,7 @@ Spotify Ads CLI for AI agents (and humans). Pull aggregate and demographic insig
 npm install -g spotify-ads-cli
 ```
 
-Or run directly with npx:
-
-```bash
-npx spotify-ads-cli --help
-```
+Or run directly: `npx spotify-ads-cli --help`
 
 ## How it works
 
