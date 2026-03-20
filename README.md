@@ -8,7 +8,7 @@ Spotify Ads CLI for AI agents (and humans). Pull aggregate and demographic insig
 
 Tell your AI agent (e.g. OpenClaw):
 
-> Install the CLI and skills from https://github.com/Bin-Huang/spotify-ads-cli
+> Install this CLI and skills from https://github.com/Bin-Huang/spotify-ads-cli
 
 Or install manually:
 
