@@ -14,7 +14,7 @@ const program = new Command();
 
 program
   .name("spotify-ads-cli")
-  .description("Spotify Ads CLI for AI agents")
+  .description("Spotify Ads CLI & Skills for AI agents")
   .version(version)
   .option("--format <format>", "Output format", "json")
   .option("--credentials <path>", "Path to credentials JSON file")

@@ -1,7 +1,7 @@
 {
   "name": "spotify-ads-cli",
   "version": "1.0.4",
-  "description": "Spotify Ads CLI for AI agents",
+  "description": "Spotify Ads CLI & Skills for AI agents",
   "type": "module",
   "bin": {
     "spotify-ads-cli": "dist/index.js"
